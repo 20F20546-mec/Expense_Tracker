@@ -41,15 +41,6 @@ public class IncomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    //Firebase Database
-    private FirebaseAuth mAuth;
-    private DatabaseReference mIncomeDatabase;
-
-    //Recycler View
-    private RecyclerView recyclerView;
-    private FirebaseRecyclerAdapter adapter;
-
-    //1-edit
     private TextView incomeTotalSum;
     //1-edit
 
@@ -83,6 +74,16 @@ public class IncomeFragment extends Fragment {
 //            mParam2 = getArguments().getString(ARG_PARAM2);
 //        }
     }
+
+    //Firebase Database
+    private FirebaseAuth mAuth;
+    private DatabaseReference mIncomeDatabase;
+
+    //Recycler View
+    private RecyclerView recyclerView;
+    private FirebaseRecyclerAdapter adapter;
+
+    //1-edit
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
