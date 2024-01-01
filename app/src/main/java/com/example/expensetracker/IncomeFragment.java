@@ -143,7 +143,8 @@ public class IncomeFragment extends Fragment {
         FirebaseRecyclerAdapter<Data, MyViewHolder> adapter = new FirebaseRecyclerAdapter<Data, MyViewHolder>(options) {
             @Override
             public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                return new MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.income_recycler_data, parent, false));
+               View myView = LayoutInflater.from(parent.getContext()).inflate(R.layout.income_recycler_data, parent, false);
+               return new MyViewHolder(myView);
             }
 
             @Override
