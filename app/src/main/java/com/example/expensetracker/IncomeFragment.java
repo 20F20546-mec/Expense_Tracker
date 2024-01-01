@@ -1,5 +1,6 @@
 package com.example.expensetracker;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,9 +8,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.expensetracker.Model.Data;
@@ -85,6 +89,15 @@ public class IncomeFragment extends Fragment {
 
     //1-edit
 
+    //Update edit text
+    private EditText editAmount;
+    private EditText editType;
+    private EditText editNote;
+
+    //Button for update and delete
+    private Button btnUpdate;
+    private Button btnDelete;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -153,13 +166,20 @@ public class IncomeFragment extends Fragment {
                 holder.setType(model.getType());
                 holder.setNote(model.getNote());
                 holder.setDate(model.getDate());
+
+                holder.mView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        updateDataItem();
+                    }
+                });
             }
         };
 
         recyclerView.setAdapter(adapter);
     }
 
-     class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder{
         View mView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -186,5 +206,39 @@ public class IncomeFragment extends Fragment {
             String st_amount = String.valueOf(amount);
             mAmount.setText(st_amount);
         }
+    }
+
+    public void updateDataItem() {
+        AlertDialog.Builder mydialog = new AlertDialog.Builder(getActivity());
+        LayoutInflater inflater = LayoutInflater.from(getActivity());
+
+        View myView = inflater.inflate(R.layout.update_data_item, null);
+
+        mydialog.setView(myView);
+
+        editAmount = myView.findViewById(R.id.amount_edit);
+        editType = myView.findViewById(R.id.type_edit);
+        editNote = myView.findViewById(R.id.note_edit);
+
+        btnUpdate = myView.findViewById(R.id.btnUpdate);
+        btnDelete = myView.findViewById(R.id.btnDelete);
+
+        AlertDialog dialog = mydialog.create();
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 }
