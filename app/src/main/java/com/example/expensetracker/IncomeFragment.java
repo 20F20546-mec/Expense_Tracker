@@ -97,7 +97,7 @@ public class IncomeFragment extends Fragment {
         mIncomeDatabase = FirebaseDatabase.getInstance("https://expense-tracker-14b95-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("IncomeData").child(uid);
 
         //1-edit
-            incomeTotalSum = myView.findViewById(R.id.income_txt_result);
+        incomeTotalSum = myView.findViewById(R.id.income_txt_result);
         //1-edit
 
         recyclerView = myView.findViewById(R.id.recycler_id_income);
